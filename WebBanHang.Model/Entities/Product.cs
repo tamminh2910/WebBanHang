@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WebBanHang.Model.Entities
 {
@@ -15,7 +11,8 @@ namespace WebBanHang.Model.Entities
         public int ProductID { get; set; }
 
         [Display(Name = "Danh mục")]
-        public int? CategoryID { get; set; }
+        public int? CategoryChildID { get; set; }
+
         [Display(Name = "Nhà cung cấp")]
         public int? SupplierID { get; set; }
 
@@ -31,7 +28,10 @@ namespace WebBanHang.Model.Entities
         [Display(Name = "Hình ảnh")]
         public string Image { get; set; }
 
-        [Display(Name = "Ngày đăng")]
+        [Column(TypeName = "xml")]
+        public string MoreImages { set; get; }
+
+        [Display(Name = "Ngày tạo")]
         [DataType(DataType.DateTime)]
         public DateTime RegisterDate { get; set; }
 

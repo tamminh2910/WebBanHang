@@ -48,7 +48,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
+    <Compile Include="Infrastructure\IDbFactory.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
+    <Compile Include="Migrations\201903261614181_InitialDb.cs" />
+    <Compile Include="Migrations\201903261614181_InitialDb.Designer.cs">
+      <DependentUpon>201903261614181_InitialDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903261618151_secondDB.cs" />
+    <Compile Include="Migrations\201903261618151_secondDB.Designer.cs">
+      <DependentUpon>201903261618151_secondDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903261624326_ThirdDB.cs" />
+    <Compile Include="Migrations\201903261624326_ThirdDB.Designer.cs">
+      <DependentUpon>201903261624326_ThirdDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\CategoryChildRepository.cs" />
+    <Compile Include="Repository\CategoryParentRepository.cs" />
+    <Compile Include="Repository\CustomerRepository.cs" />
+    <Compile Include="Repository\EmployeeRepository.cs" />
+    <Compile Include="Repository\ErrorRepository.cs" />
+    <Compile Include="Repository\OrderDetailRepository.cs" />
+    <Compile Include="Repository\OrderRepository.cs" />
+    <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\RoleRepository.cs" />
+    <Compile Include="Repository\StateRepository.cs" />
+    <Compile Include="Repository\SupplierRepository.cs" />
+    <Compile Include="WebBanHangDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -59,6 +91,21 @@
       <Project>{7d7098cb-8a2e-400c-aac5-8c28e8832dcf}</Project>
       <Name>WebBanHang.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebBanHang.Model\WebBanHang.Model.csproj">
+      <Project>{C58AB834-4CF4-4139-A89A-0203E22903E9}</Project>
+      <Name>WebBanHang.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903261614181_InitialDb.resx">
+      <DependentUpon>201903261614181_InitialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903261618151_secondDB.resx">
+      <DependentUpon>201903261618151_secondDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903261624326_ThirdDB.resx">
+      <DependentUpon>201903261624326_ThirdDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

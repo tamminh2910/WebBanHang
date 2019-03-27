@@ -11,6 +11,8 @@ namespace WebBanHang.Model.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CustomerID { get; set; }
 
+        public int? OrderID { get; set; }
+
         [StringLength(100)]
         [Display(Name = "Họ tên")]
         public string CustomerName { get; set; }
@@ -38,6 +40,10 @@ namespace WebBanHang.Model.Entities
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu!!")]
         public string Password { get; set; }
 
-        public virtual IEnumerable<Order> Orders  { get; set; }
+        [Display(Name = "Ngày tạo")]
+        public DateTime CreatedDate { get; set; }
+
+        [ForeignKey("OrderID")]
+        public virtual IEnumerable<Order> Orders { get; set; }
     }
 }

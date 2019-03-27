@@ -52,42 +52,18 @@
     <Compile Include="Entities\CategoryParent.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\Error.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\OrderDetail.cs" />
     <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\Role.cs" />
     <Compile Include="Entities\State.cs" />
     <Compile Include="Entities\Supplier.cs" />
-    <Compile Include="Migrations\201903150347076_FirstDB.cs" />
-    <Compile Include="Migrations\201903150347076_FirstDB.Designer.cs">
-      <DependentUpon>201903150347076_FirstDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903150413434_SecondDB.cs" />
-    <Compile Include="Migrations\201903150413434_SecondDB.Designer.cs">
-      <DependentUpon>201903150413434_SecondDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903150415452_ThirdDB.cs" />
-    <Compile Include="Migrations\201903150415452_ThirdDB.Designer.cs">
-      <DependentUpon>201903150415452_ThirdDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebBanHangContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903150347076_FirstDB.resx">
-      <DependentUpon>201903150347076_FirstDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903150413434_SecondDB.resx">
-      <DependentUpon>201903150413434_SecondDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903150415452_ThirdDB.resx">
-      <DependentUpon>201903150415452_ThirdDB.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

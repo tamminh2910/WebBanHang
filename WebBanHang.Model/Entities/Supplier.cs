@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WebBanHang.Model.Entities
 {
@@ -13,6 +10,8 @@ namespace WebBanHang.Model.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SupplierID { get; set; }
+
+        public int? ProductID { get; set; }
 
         [StringLength(100)]
         [Display(Name = "Tên nhà cung cấp")]
@@ -35,6 +34,12 @@ namespace WebBanHang.Model.Entities
 
         [StringLength(100)]
         public string Email { get; set; }
+
+        [Display(Name = "Ngày tạo")]
+        public DateTime CreatedDate { get; set; }
+
+        [Display(Name = "Trạng thái")]
+        public bool? State { get; set; }
 
         public virtual IEnumerable<Product> Products { get; set; }
     }

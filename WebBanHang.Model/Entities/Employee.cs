@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WebBanHang.Model.Entities
 {
@@ -43,9 +39,12 @@ namespace WebBanHang.Model.Entities
         [Required(ErrorMessage = "Vui lòng nhập mật khẩu")]
         public string Password { get; set; }
 
-        [Display(Name = "Tên vai trò")]
+        [Display(Name = "Ngày tạo")]
+        public DateTime CreatedDate { get; set; }
+
         public string RoleName { get; set; }
 
+        [ForeignKey("RoleName")]
         public virtual Role Role { set; get; }
     }
 }

@@ -14,8 +14,7 @@ namespace WebBanHang.Model.Entities
         public int? CustomerID { get; set; }
         [Display(Name = "Nhân viên")]
         public int? EmployeeID { get; set; }
-        [Display(Name = "Người giao hàng")]
-        public int? ShipperID { get; set; }
+        
         [Display(Name = "Tình trạng giao hàng")]
         public int? StateID { get; set; }
 

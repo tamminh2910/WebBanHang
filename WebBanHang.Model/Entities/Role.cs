@@ -12,6 +12,6 @@ namespace WebBanHang.Model.Entities
         [Display(Name = "Mô tả")]
         public string Description { get; set; }
 
-        public virtual IEnumerable<Employee> Employee { get; set; }
+        public virtual IEnumerable<Employee> Employees { get; set; }
     }
 }
