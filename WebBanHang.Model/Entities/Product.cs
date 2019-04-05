@@ -16,6 +16,10 @@ namespace WebBanHang.Model.Entities
         [Display(Name = "Nhà cung cấp")]
         public int? SupplierID { get; set; }
 
+        [Required]
+        [MaxLength(256)]
+        public string Alias { set; get; }
+
         [StringLength(250)]
         [Display(Name = "Tên sản phẩm")]
         [Required(ErrorMessage = "Vui lòng nhập tên sản phẩm!!")]

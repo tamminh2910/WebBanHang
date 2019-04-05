@@ -1,17 +1,24 @@
-﻿using System.Net;
+﻿using AutoMapper;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Script.Serialization;
 using WebBanHang.Model.Entities;
 using WebBanHang.Service;
 using WebBanHang.Web.Infrastructure.Core;
+using WebBanHang.Web.Infrastructure.Extensions;
+using WebBanHang.Web.Models;
 
 namespace WebBanHang.Web.Api
 {
     [RoutePrefix("api/categorychild")]
     public class CategoryChildController : ApiControllerBase
     {
-        ICategoryChildService _categoryChildService;
-        
+        private ICategoryChildService _categoryChildService;
+
         public CategoryChildController(IErrorService errorService, ICategoryChildService categoryChildService) :
             base(errorService)
         {
@@ -19,73 +26,161 @@ namespace WebBanHang.Web.Api
         }
 
         [Route("getall")]
-        public HttpResponseMessage Get(HttpRequestMessage request)
+        [HttpGet]
+        public HttpResponseMessage GetAll(HttpRequestMessage request, string keyword, int page, int pageSize)
         {
             return CreateHttpResponse(request, () =>
             {
-                var listCategory = _categoryChildService.GetAll();
+                int totalRow = 0;
+                var model = _categoryChildService.GetAll(keyword);
+                totalRow = model.Count();
+                var query = model.OrderByDescending(x => x.CategoryChildID).Skip(page * pageSize).Take(pageSize);
 
-                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listCategory);
+                var responseData = Mapper.Map<IEnumerable<CategoryChild>, IEnumerable<CategoryChildViewModel>>(query);
 
+                PaginationSet<CategoryChildViewModel> paginationSet = new PaginationSet<CategoryChildViewModel>()
+                {
+                    Items = responseData,
+                    Page = page,
+                    TotalCount = totalRow,
+                    TotalPages = (int)Math.Ceiling((decimal)totalRow / pageSize)
+                };
+
+                var response = request.CreateResponse(HttpStatusCode.OK, paginationSet);
                 return response;
             });
         }
 
-        public HttpResponseMessage Post(HttpRequestMessage request, CategoryChild categoryChild)
+        [Route("getallchilds")]
+        [HttpGet]
+        public HttpResponseMessage GetAllCategoryParent(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var model = _categoryChildService.GetAll();
+                var responseData = Mapper.Map<IEnumerable<CategoryChild>, IEnumerable<CategoryChildViewModel>>(model);
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                return response;
+            });
+        }
+
+        [Route("getbyid/{id:int}")]
+        [HttpGet]
+        public HttpResponseMessage GetById(HttpRequestMessage request, int id)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var model = _categoryChildService.GetById(id);
+
+                var responseData = Mapper.Map<CategoryChild, CategoryChildViewModel>(model);
+
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                return response;
+            });
+        }
+
+        [Route("create")]
+        [HttpPost]
+        public HttpResponseMessage Create(HttpRequestMessage request, CategoryChildViewModel categoryChildVm)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                    var category = _categoryChildService.Add(categoryChild);
+                    var newCategoryChild = new CategoryChild();
+                    newCategoryChild.UpdateCategoryChild(categoryChildVm);
+
+                    _categoryChildService.Add(newCategoryChild);
                     _categoryChildService.Save();
 
-                    response = request.CreateResponse(HttpStatusCode.Created, category);
+                    var responseData = Mapper.Map<CategoryChild, CategoryChildViewModel>(newCategoryChild);
+
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
                 return response;
             });
         }
 
-        public HttpResponseMessage Put(HttpRequestMessage request, CategoryChild postCategory)
+        [Route("update")]
+        [HttpPut]
+        [AllowAnonymous]
+        public HttpResponseMessage Update(HttpRequestMessage request, CategoryChildViewModel categoryChildVm)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                    _categoryChildService.Update(postCategory);
+                    var dbCategoryChild = _categoryChildService.GetById(categoryChildVm.CategoryChildID);
+                    dbCategoryChild.UpdateCategoryChild(categoryChildVm);
+
+                    _categoryChildService.Update(dbCategoryChild);
                     _categoryChildService.Save();
 
-                    response = request.CreateResponse(HttpStatusCode.OK);
+                    var responseData = Mapper.Map<CategoryChild, CategoryChildViewModel>(dbCategoryChild);
+
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
                 }
                 return response;
             });
         }
 
+        [Route("delete")]
+        [HttpDelete]
+        [AllowAnonymous]
         public HttpResponseMessage Delete(HttpRequestMessage request, int id)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-                if (ModelState.IsValid)
+                if (!ModelState.IsValid)
                 {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else
                 {
-                    _categoryChildService.Delete(id);
+                    var oldCategoryChild = _categoryChildService.Delete(id);
                     _categoryChildService.Save();
 
-                    response = request.CreateResponse(HttpStatusCode.OK);
+                    var responseData = Mapper.Map<CategoryChild, CategoryChildViewModel>(oldCategoryChild);
+
+                    response = request.CreateResponse(HttpStatusCode.Created, responseData);
+                }
+                return response;
+            });
+        }
+
+        [Route("deleteMulti")]
+        [HttpDelete]
+        [AllowAnonymous]
+        public HttpResponseMessage DeleteMulti(HttpRequestMessage request, string listItem)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var items = new JavaScriptSerializer().Deserialize<List<int>>(listItem);
+                    foreach (var item in items)
+                    {
+                        _categoryChildService.Delete(item);
+                    }
+                    _categoryChildService.Save();
+
+                    response = request.CreateResponse(HttpStatusCode.OK, items.Count);
                 }
                 return response;
             });

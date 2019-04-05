@@ -14,7 +14,7 @@ namespace WebBanHang.Data.Repository
     }
     public class CustomerRepository: RepositoryBase<Customer>,ICustomerRepository
     {
-        public CustomerRepository(DbFactory dbFactory):base(dbFactory)
+        public CustomerRepository(IDbFactory dbFactory):base(dbFactory)
         {
 
         }

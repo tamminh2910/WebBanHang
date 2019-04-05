@@ -67,6 +67,14 @@
     <Compile Include="Migrations\201903261624326_ThirdDB.Designer.cs">
       <DependentUpon>201903261624326_ThirdDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904031037196_AliasDB.cs" />
+    <Compile Include="Migrations\201904031037196_AliasDB.Designer.cs">
+      <DependentUpon>201904031037196_AliasDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904050342417_deleteProductIDInCategoryChildDb.cs" />
+    <Compile Include="Migrations\201904050342417_deleteProductIDInCategoryChildDb.Designer.cs">
+      <DependentUpon>201904050342417_deleteProductIDInCategoryChildDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CategoryChildRepository.cs" />
@@ -105,6 +113,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903261624326_ThirdDB.resx">
       <DependentUpon>201903261624326_ThirdDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904031037196_AliasDB.resx">
+      <DependentUpon>201904031037196_AliasDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904050342417_deleteProductIDInCategoryChildDb.resx">
+      <DependentUpon>201904050342417_deleteProductIDInCategoryChildDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

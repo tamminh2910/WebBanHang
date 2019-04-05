@@ -14,7 +14,7 @@ namespace WebBanHang.Data.Repository
     }
     public class SupplierRepository:RepositoryBase<Supplier>,ISupplierRepository
     {
-        public SupplierRepository(DbFactory dbFactory):base(dbFactory)
+        public SupplierRepository(IDbFactory dbFactory):base(dbFactory)
         {
 
         }

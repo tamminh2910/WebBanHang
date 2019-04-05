@@ -14,7 +14,7 @@ namespace WebBanHang.Data.Repository
     }
     public class OrderDetailRepository: RepositoryBase<OrderDetail>, IOrderDetailRepository
     {
-        public OrderDetailRepository(DbFactory dbFactory):base(dbFactory)
+        public OrderDetailRepository(IDbFactory dbFactory):base(dbFactory)
         {
 
         }

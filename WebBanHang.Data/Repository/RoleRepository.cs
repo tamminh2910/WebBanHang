@@ -9,7 +9,7 @@ namespace WebBanHang.Data.Repository
 
     public class RoleRepository:RepositoryBase<Role>,IRoleRepository
     {
-        public RoleRepository(DbFactory dbFactory):base(dbFactory)
+        public RoleRepository(IDbFactory dbFactory):base(dbFactory)
         {
 
         }

@@ -1,0 +1,89 @@
+﻿ <!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Danh sách sản phẩm
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a class="active">Sản phẩm</a></li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <div class="box-tools pull-right">
+                
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form ng-submit="search()">
+                        <div class="input-group">
+
+                            <input type="text" ng-model="keyword" class="form-control" placeholder="Nhập từ khóa...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" ng-click="search()">Tìm kiếm</button>
+                            </span>
+                        </div><!-- /input-group -->
+
+                    </form>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <button class=" btn btn-success" ui-sref="add_product">Thêm mới</button>
+                    <button class="btn btn-danger" type="button" ng-click="deleteMultiple()" id="btnDelete" disabled>Xóa</button>
+
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th><input type="checkbox" name="all" ng-click="selectAll()" /></th>
+                            <th style="width: 5%">ID</th>
+                            <th style="width:30%">Tên sản phẩm</th>
+                            <th style="width:10%">Hình ảnh</th>
+                            <th style="width:15%">Giá bán</th>
+                            <th style="width: 15%">Ngày tạo</th>
+                            <th style="width: 10%">Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                        <tr ng-repeat="item in products">
+                            <td><input type="checkbox" name="all" ng-model="item.checked" /></td>
+                            <td>{{item.ProductID}}</td>
+                            <td>{{item.Name}}</td>
+                            <td>
+                                <img width="100" ng-src="{{item.Image}}" /> 
+                            </td>
+                            <td>{{item.UnitPrice | number}}</td>
+                            <td>{{item.RegisterDate | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+                            <td><span ng-class="{'badge bg-red':item.State==false,'badge bg-green':item.State==true}" class="badge bg-red">{{item.State | stateFilter}}</span></td>
+                            <td>
+                                <button ui-sref="edit_product({id:item.ProductID})" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-sm btn-danger" ng-click="deleteProduct(item.ProductID)"><i class="fa fa-trash"></i></button>
+                            </td>
+
+                        </tr>
+                        <tfoot>
+                            <tr>
+                                <td colspan="8"><span class="pull-right">Trang: {{page + 1}} - Tổng số bảng ghi: {{totalCount}}</span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <pager-directive page="{{page}}" custom-path="{{customPaths}}" pages-count="{{pagesCount}}" total-count="{{}}" search-func="getListProducts(page)"></pager-directive>
+        </div>
+        <!-- /.box-footer-->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->

@@ -14,7 +14,7 @@ namespace WebBanHang.Data.Repository
     }
     public class StateRepository:RepositoryBase<State>,IStateRepository
     {
-        public StateRepository(DbFactory dbFactory):base(dbFactory)
+        public StateRepository(IDbFactory dbFactory):base(dbFactory)
         {
 
         }

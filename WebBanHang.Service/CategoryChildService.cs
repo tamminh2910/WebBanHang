@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using WebBanHang.Data.Infrastructure;
 using WebBanHang.Data.Repository;
 using WebBanHang.Model.Entities;
@@ -12,10 +11,11 @@ namespace WebBanHang.Service
 
         void Update(CategoryChild categoryChild);
 
-        void Delete(int id);
+        CategoryChild Delete(int id);
 
         IEnumerable<CategoryChild> GetAll();
 
+        IEnumerable<CategoryChild> GetAll(string keyword);
 
         CategoryChild GetById(int id);
 
@@ -38,9 +38,9 @@ namespace WebBanHang.Service
             return _categoryChildRepository.Add(categoryChild);
         }
 
-        public void Delete(int id)
+        public CategoryChild Delete(int id)
         {
-            _categoryChildRepository.Delete(id);
+            return _categoryChildRepository.Delete(id);
         }
 
         public IEnumerable<CategoryChild> GetAll()
@@ -48,7 +48,15 @@ namespace WebBanHang.Service
             return _categoryChildRepository.GetAll();
         }
 
-      
+        public IEnumerable<CategoryChild> GetAll(string keyword)
+        {
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                return _categoryChildRepository.GetMulti(x => x.CategoryChildName.Contains(keyword));
+            }
+            else return _categoryChildRepository.GetAll();
+        }
+
         public CategoryChild GetById(int id)
         {
             return _categoryChildRepository.GetSingleById(id);
@@ -64,4 +72,5 @@ namespace WebBanHang.Service
             _categoryChildRepository.Update(categoryChild);
         }
     }
+
 }

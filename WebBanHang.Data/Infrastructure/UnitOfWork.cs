@@ -10,7 +10,7 @@
         }
         public WebBanHangDbContext DbContext
         {
-            get { return dbContext ?? (dbContext = new WebBanHangDbContext()); }
+            get { return dbContext ?? (dbContext = dbFactory.Init()); }
         }
         public void Commit()
         {

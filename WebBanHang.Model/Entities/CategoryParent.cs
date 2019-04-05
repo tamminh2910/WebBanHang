@@ -16,7 +16,11 @@ namespace WebBanHang.Model.Entities
         [Required]
         public string CategoryParentName { get; set; }
 
-        [Display(Name ="Mô tả")]
+        [Required]
+        [MaxLength(256)]
+        public string Alias { set; get; }
+
+        [Display(Name = "Mô tả")]
         public string Description { get; set; }
 
         [Display(Name = "Ngày tạo")]

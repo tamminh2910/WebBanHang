@@ -9,7 +9,7 @@ namespace WebBanHang.Data.Repository
 
     public class EmployeeRepository : RepositoryBase<Employee>, IEmployeeRepository
     {
-        public EmployeeRepository(DbFactory dbFactory) : base(dbFactory)
+        public EmployeeRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
     }

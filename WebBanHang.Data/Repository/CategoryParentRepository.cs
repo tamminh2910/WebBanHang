@@ -9,7 +9,7 @@ namespace WebBanHang.Data.Repository
 
     public class CategoryParentRepository:RepositoryBase<CategoryParent>,ICategoryParentRepository
     {
-        public CategoryParentRepository(DbFactory dbFactory):base(dbFactory)
+        public CategoryParentRepository(IDbFactory dbFactory):base(dbFactory)
         {
 
         }
