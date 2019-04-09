@@ -1,4 +1,5 @@
-﻿using WebBanHang.Data.Infrastructure;
+﻿using System.Collections.Generic;
+using WebBanHang.Data.Infrastructure;
 using WebBanHang.Model.Entities;
 
 namespace WebBanHang.Data.Repository
@@ -12,5 +13,7 @@ namespace WebBanHang.Data.Repository
         public EmployeeRepository(IDbFactory dbFactory) : base(dbFactory)
         {
         }
+
+
     }
 }

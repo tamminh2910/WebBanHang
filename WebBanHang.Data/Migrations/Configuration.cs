@@ -22,8 +22,37 @@
             //  to avoid creating duplicate seed data.
             CreateCategoryParent(context);
             CreateCategoryChild(context);
+            CreateCustomer(context);
+            CreateEmployee(context);
         }
 
+        private void CreateEmployee(WebBanHangDbContext context)
+        {
+            if (context.Employees.Count() == 0)
+            {
+                List<Employee> employees = new List<Employee>()
+                {
+                    new Employee() { EmployeeName="Nguyễn Minh Tâm",UserName="admin1",Password="123456",Phone="0332913127",CreatedDate=DateTime.Now},
+                    new Employee() { EmployeeName="Nguyễn Văn Bảy",UserName="admin2",Password="123456",Phone="0974531234",CreatedDate=DateTime.Now}
+                };
+                context.Employees.AddRange(employees);
+                context.SaveChanges();
+            }
+        }
+
+        private void CreateCustomer(WebBanHangDbContext context)
+        {
+            if (context.Customers.Count() == 0)
+            {
+                List<Customer> customers = new List<Customer>()
+                {
+                    new Customer() { CustomerName="Nguyễn Minh Tâm",UserName="tam",Password="123456",Phone="0332913127",CreatedDate=DateTime.Now},
+                    new Customer() { CustomerName="Nguyễn Văn Bảy",UserName="bay",Password="123456",Phone="0974531234",CreatedDate=DateTime.Now}
+                };
+                context.Customers.AddRange(customers);
+                context.SaveChanges();
+            }
+        }
 
         private void CreateCategoryParent(WebBanHang.Data.WebBanHangDbContext context)
         {

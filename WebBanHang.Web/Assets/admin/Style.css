@@ -1,3 +1,6 @@
 ﻿.input-error {
     color:red;
 }
+html, body {
+    height: 100%;
+}

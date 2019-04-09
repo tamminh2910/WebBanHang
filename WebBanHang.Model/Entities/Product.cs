@@ -13,9 +13,7 @@ namespace WebBanHang.Model.Entities
         [Display(Name = "Danh mục")]
         public int? CategoryChildID { get; set; }
 
-        [Display(Name = "Nhà cung cấp")]
-        public int? SupplierID { get; set; }
-
+       
         [Required]
         [MaxLength(256)]
         public string Alias { set; get; }
@@ -50,6 +48,5 @@ namespace WebBanHang.Model.Entities
 
         public virtual CategoryChild CategoryChild { get; set; }
 
-        public virtual Supplier Supplier { get; set; }
     }
 }

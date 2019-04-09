@@ -23,7 +23,6 @@ namespace WebBanHang.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<State> States { get; set; }
-        public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Error> Errors { get; set; }
 
 

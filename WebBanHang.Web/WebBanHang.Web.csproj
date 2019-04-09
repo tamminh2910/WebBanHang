@@ -173,6 +173,8 @@
   <ItemGroup>
     <Compile Include="Api\CategoryChildController.cs" />
     <Compile Include="Api\CategoryParentController.cs" />
+    <Compile Include="Api\CustomerController.cs" />
+    <Compile Include="Api\EmployeeController.cs" />
     <Compile Include="Api\ProductController.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -190,7 +192,13 @@
     <Compile Include="Mappings\AutoMapperConfiguration.cs" />
     <Compile Include="Models\CategoryChildViewModel.cs" />
     <Compile Include="Models\CategoryParentViewModel.cs" />
+    <Compile Include="Models\CustomerViewModel.cs" />
+    <Compile Include="Models\EmployeeViewModel.cs" />
+    <Compile Include="Models\OrderDetailViewModel.cs" />
+    <Compile Include="Models\OrderViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\RoleViewModel.cs" />
+    <Compile Include="Models\StateViewModel.cs" />
     <Compile Include="Models\SupplierViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -210,8 +218,24 @@
     <Content Include="app\components\category_parents\categoryParentListController.js" />
     <Content Include="app\components\category_parents\categoryParentListView.html" />
     <Content Include="app\components\category_parents\categoryParents.module.js" />
+    <Content Include="app\components\customers\customerAddController.js" />
+    <Content Include="app\components\customers\customerAddView.html" />
+    <Content Include="app\components\customers\customerEditController.js" />
+    <Content Include="app\components\customers\customerEditView.html" />
+    <Content Include="app\components\customers\customerListController.js" />
+    <Content Include="app\components\customers\customerListView.html" />
+    <Content Include="app\components\customers\customers.module.js" />
+    <Content Include="app\components\employees\employeeAddController.js" />
+    <Content Include="app\components\employees\employeeAddView.html" />
+    <Content Include="app\components\employees\employeeEditController.js" />
+    <Content Include="app\components\employees\employeeEditView.html" />
+    <Content Include="app\components\employees\employeeListController.js" />
+    <Content Include="app\components\employees\employeeListView.html" />
+    <Content Include="app\components\employees\employees.module.js" />
     <Content Include="app\components\home\homeController.js" />
     <Content Include="app\components\home\homeView.html" />
+    <Content Include="app\components\login\loginController.js" />
+    <Content Include="app\components\login\loginView.html" />
     <Content Include="app\components\products\products.module.js" />
     <Content Include="app\components\products\productAddController.js" />
     <Content Include="app\components\products\productAddView.html" />
@@ -226,6 +250,7 @@
     <Content Include="app\shared\services\apiService.js" />
     <Content Include="app\shared\services\commonService.js" />
     <Content Include="app\shared\services\notificationService.js" />
+    <Content Include="app\shared\views\baseView.html" />
     <Content Include="Assets\admin\ckfinder\changelog.txt" />
     <Content Include="Assets\admin\ckfinder\ckfinder.html" />
     <Content Include="Assets\admin\ckfinder\ckfinder.js" />
@@ -7287,7 +7312,6 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="app\components\users\" />
     <Folder Include="app\shared\navigation\" />
     <Folder Include="Assets\admin\libs\" />
     <Folder Include="Assets\client\" />

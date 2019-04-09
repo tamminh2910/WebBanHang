@@ -28,7 +28,7 @@
                     notificationService.displaySuccess(result.data.CategoryChildName + ' đã được cập nhật.')
                     $state.go('category_childs')
                 }, function (error) {
-                    notificationService.displayError('Thêm mới không thành công.')
+                    notificationService.displayError('Cập nhật không thành công.')
                 });
         }
         function loadCategoryParent() {

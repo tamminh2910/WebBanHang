@@ -30,7 +30,6 @@ namespace WebBanHang.Web.Infrastructure.Extensions
         {
             product.ProductID = productVm.ProductID;
             product.CategoryChildID = productVm.CategoryChildID;
-            product.SupplierID = productVm.SupplierID;
             product.Name = productVm.Name;
             product.Alias = productVm.Alias;
             product.UnitPrice = productVm.UnitPrice;
@@ -40,6 +39,34 @@ namespace WebBanHang.Web.Infrastructure.Extensions
             product.Discount = productVm.Discount;
             product.Description = productVm.Description;
             product.State = productVm.State;
+        }
+        public static void UpdateCustomer(this Customer customer, CustomerViewModel customerViewModel)
+        {
+            customer.CustomerID = customerViewModel.CustomerID;
+            customer.OrderID = customerViewModel.OrderID;
+            customer.CustomerName = customerViewModel.CustomerName;
+            customer.Birthday = customerViewModel.Birthday;
+            customer.Address = customerViewModel.Address;
+            customer.Phone = customerViewModel.Phone;
+            customer.Email = customerViewModel.Email;
+            customer.UserName = customerViewModel.UserName;
+            customer.Password = customerViewModel.Password;
+            customer.CreatedDate = customerViewModel.CreatedDate;
+        }
+        public static void UpdateEmployee(this Employee employee, EmployeeViewModel employeeViewModel)
+        {
+
+            employee.EmployeeID = employeeViewModel.EmployeeID;
+            employee.EmployeeName = employeeViewModel.EmployeeName;
+            employee.Birthday = employeeViewModel.Birthday;
+            employee.Address = employeeViewModel.Address;
+            employee.Phone = employeeViewModel.Phone;
+            employee.Email = employeeViewModel.Email;
+            employee.Image = employeeViewModel.Image;
+            employee.UserName = employeeViewModel.UserName;
+            employee.Password = employeeViewModel.Password;
+            employee.RoleName = employeeViewModel.RoleName;
+            employee.CreatedDate = employeeViewModel.CreatedDate;
         }
     }
 }

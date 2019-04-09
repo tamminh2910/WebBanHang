@@ -75,6 +75,10 @@
     <Compile Include="Migrations\201904050342417_deleteProductIDInCategoryChildDb.Designer.cs">
       <DependentUpon>201904050342417_deleteProductIDInCategoryChildDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904080359323_deleteSupplierDb.cs" />
+    <Compile Include="Migrations\201904080359323_deleteSupplierDb.Designer.cs">
+      <DependentUpon>201904080359323_deleteSupplierDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\CategoryChildRepository.cs" />
@@ -87,7 +91,6 @@
     <Compile Include="Repository\ProductRepository.cs" />
     <Compile Include="Repository\RoleRepository.cs" />
     <Compile Include="Repository\StateRepository.cs" />
-    <Compile Include="Repository\SupplierRepository.cs" />
     <Compile Include="WebBanHangDbContext.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904050342417_deleteProductIDInCategoryChildDb.resx">
       <DependentUpon>201904050342417_deleteProductIDInCategoryChildDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904080359323_deleteSupplierDb.resx">
+      <DependentUpon>201904080359323_deleteSupplierDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

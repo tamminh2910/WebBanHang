@@ -4,6 +4,8 @@
         ['webbanhang.products',
             'webbanhang.category_parents',
             'webbanhang.category_childs',
+            'webbanhang.customers',
+            'webbanhang.employees',
             'webbanhang.common'])
         .config(config);
 

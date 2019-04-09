@@ -10,11 +10,13 @@ namespace WebBanHang.Model.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderID { get; set; }
+
         [Display(Name = "Khách hàng")]
         public int? CustomerID { get; set; }
+
         [Display(Name = "Nhân viên")]
         public int? EmployeeID { get; set; }
-        
+
         [Display(Name = "Tình trạng giao hàng")]
         public int? StateID { get; set; }
 
@@ -40,6 +42,5 @@ namespace WebBanHang.Model.Entities
 
         [ForeignKey("StateID")]
         public virtual State State { set; get; }
-
     }
 }
