@@ -1,3 +1,5 @@
 ﻿(function () {
-    angular.module('webbanhang.common', ['ui.router', 'ngBootbox','ngCkeditor']);
+   angular.module('webbanhang.common', ['ui.router', 'ngBootbox', 'ngCkeditor']);
+   
+   
 })();

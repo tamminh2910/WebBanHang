@@ -1,5 +1,7 @@
 ﻿namespace WebBanHang.Data.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -24,6 +26,54 @@
             CreateCategoryChild(context);
             CreateCustomer(context);
             CreateEmployee(context);
+
+            //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new WebBanHangDbContext()));
+
+            //var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new WebBanHangDbContext()));
+
+            //var user = new ApplicationUser()
+            //{
+            //    UserName = "admin",
+            //    Email = "tamminh.2910@gmail.com",
+            //    EmailConfirmed = true,
+            //    BirthDay = DateTime.Now,
+            //    FullName = "Nguyễn Minh Tâm"
+
+            //};
+
+            //manager.Create(user, "123456");
+
+            //if (!roleManager.Roles.Any())
+            //{
+            //    roleManager.Create(new IdentityRole { Name = "Admin" });
+            //    roleManager.Create(new IdentityRole { Name = "User" });
+            //}
+
+            //var adminUser = manager.FindByEmail("tamminh.2910@gmail.com");
+
+            //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
+            //CreateOrder(context);
+        }
+
+        private void CreateOrder(WebBanHangDbContext context)
+        {
+            Order order = new Order()
+            {
+                CustomerName = "Nguyễn Văn Bảy",
+                CustomerEmail = "nguyenbay@gmail.com",
+                CustomerPhone = "0975362123",
+                OrderDate = DateTime.Now,
+                Status = true
+            };
+            context.Orders.Add(order);
+            context.SaveChanges();
+            List<OrderDetail> orderDetails = new List<OrderDetail>()
+            {
+                new OrderDetail(){ProductID=3,OrderID= order.OrderID,Quantity=2,UnitPrice=12323},
+                new OrderDetail(){ProductID=4,OrderID= order.OrderID,Quantity=2,UnitPrice=23123},
+            };
+            context.OrderDetails.AddRange(orderDetails);
+            context.SaveChanges();
         }
 
         private void CreateEmployee(WebBanHangDbContext context)

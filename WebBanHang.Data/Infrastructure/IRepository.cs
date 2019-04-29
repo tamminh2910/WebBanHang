@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using WebBanHang.Model.Entities;
 
 namespace WebBanHang.Data.Infrastructure
 {
@@ -33,5 +34,7 @@ namespace WebBanHang.Data.Infrastructure
         int Count(Expression<Func<T, bool>> where);
 
         bool CheckContains(Expression<Func<T, bool>> predicate);
+
+        IQueryable<OrderDetail> GetOrderDetail(int id);
     }
 }

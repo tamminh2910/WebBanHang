@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using WebBanHang.Model.Entities;
 
 namespace WebBanHang.Data.Infrastructure
 {
@@ -139,7 +140,14 @@ namespace WebBanHang.Data.Infrastructure
             return dataContext.Set<T>().Count<T>(predicate) > 0;
         }
 
-       
+        public IQueryable<OrderDetail> GetOrderDetail(int id)
+        {
+           return dataContext.OrderDetails.Where(x => x.OrderID == id);
+
+          
+        }
+
+
 
         #endregion Implementation
     }

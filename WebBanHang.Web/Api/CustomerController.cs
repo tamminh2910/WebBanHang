@@ -15,6 +15,7 @@ using WebBanHang.Web.Models;
 namespace WebBanHang.Web.Api
 {
     [RoutePrefix("api/customer")]
+    [Authorize]
     public class CustomerController : ApiControllerBase
     {
         private ICustomerService _customerService;

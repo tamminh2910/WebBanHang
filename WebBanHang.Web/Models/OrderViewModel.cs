@@ -9,11 +9,14 @@ namespace WebBanHang.Web.Models
     {
         public int OrderID { get; set; }
 
-        public int? CustomerID { get; set; }
+        public string CustomerName { set; get; }
 
-        public int? EmployeeID { get; set; }
 
-        public int? StateID { get; set; }
+        public string CustomerEmail { set; get; }
+
+        public string CustomerPhone { set; get; }
+
+        public bool Status { get; set; }
 
         public DateTime OrderDate { get; set; }
 
@@ -21,12 +24,11 @@ namespace WebBanHang.Web.Models
 
         public string ShipAddress { get; set; }
 
+        public int? CustomerID { get; set; }
+
         public virtual CustomerViewModel Customer { get; set; }
 
-        public virtual EmployeeViewModel Employee { get; set; }
 
         public virtual IEnumerable<OrderDetailViewModel> OrderDetails { get; set; }
-
-        public virtual StateViewModel State { set; get; }
     }
 }

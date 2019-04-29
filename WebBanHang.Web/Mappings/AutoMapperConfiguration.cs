@@ -17,7 +17,18 @@ namespace WebBanHang.Web.Mappings
                 cfg.CreateMap<CategoryChild, CategoryChildViewModel>();
                 cfg.CreateMap<CategoryParent, CategoryParentViewModel>();
                 cfg.CreateMap<Product, ProductViewModel>();
+                cfg.CreateMap<Customer, CustomerViewModel>();
+                cfg.CreateMap<ApplicationUser, ApplicationUserViewModel>();
+                cfg.CreateMap<Order, OrderViewModel>();
+                cfg.CreateMap<OrderDetail, OrderDetailViewModel>();
+                cfg.CreateMap<Product, OrderDetailViewModel>();
+
+              
             });
+           
+            
         }
+
+
     }
 }

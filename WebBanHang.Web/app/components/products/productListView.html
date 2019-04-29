@@ -6,7 +6,7 @@
     </h1>
     <ol class="breadcrumb">
         <li><a ui-sref="home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
-        <li><a class="active">Sản phẩm</a></li>
+        <li><a class="active">Quản lý sản phẩm</a></li>
     </ol>
 </section>
 <!-- Main content -->
@@ -44,20 +44,45 @@
                     <table class="table table-bordered">
                         <tr>
                             <th><input type="checkbox" name="all" ng-click="selectAll()" /></th>
-                            <th style="width: 5%">ID</th>
-                            <th style="width:30%">Tên sản phẩm</th>
+                            <th style="width: 8%">
+                                <button ng-click="sortBy('ProductID')" class="btn btn-default">
+                                    ID
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='ProductID'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th style="width:30%">
+                                <button ng-click="sortBy('Name')" class="btn btn-default">
+                                    Tên sản phẩm
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='Name'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
                             <th style="width:10%">Hình ảnh</th>
-                            <th style="width:15%">Giá bán</th>
-                            <th style="width: 15%">Ngày tạo</th>
-                            <th style="width: 10%">Trạng thái</th>
+                            <th style="width:15%">
+                                <button ng-click="sortBy('UnitPrice')" class="btn btn-default">
+                                    Giá bán
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='UnitPrice'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th style="width: 15%">
+                                <button ng-click="sortBy('RegisterDate')" class="btn btn-default">
+                                    Ngày tạo
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='RegisterDate'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th style="width: 10%">
+                                <button ng-click="sortBy('State')" class="btn btn-default">
+                                    Trạng thái
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='State'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
                             <th>Thao tác</th>
                         </tr>
-                        <tr ng-repeat="item in products">
+                        <tr ng-repeat="item in products | orderBy:propertyName:reverse">
                             <td><input type="checkbox" name="all" ng-model="item.checked" /></td>
                             <td>{{item.ProductID}}</td>
                             <td>{{item.Name}}</td>
                             <td>
-                                <img width="100" ng-src="{{item.Image}}" /> 
+                                <img width="100" ng-src="{{item.Image}}" />
                             </td>
                             <td>{{item.UnitPrice | number}}</td>
                             <td>{{item.RegisterDate | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
@@ -74,7 +99,6 @@
                             </tr>
                         </tfoot>
                     </table>
-
                 </div>
             </div>
         </div>

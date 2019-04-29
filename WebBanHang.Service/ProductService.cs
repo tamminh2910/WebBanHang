@@ -50,6 +50,7 @@ namespace WebBanHang.Service
         public IEnumerable<Product> GetAll()
         {
             return _productRepository.GetAll();
+            
         }
 
         public IEnumerable<Product> GetAll(string keyword)

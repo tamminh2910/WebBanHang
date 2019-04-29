@@ -26,6 +26,9 @@
                     toastr.error(err);
                 });
             }
+            else {
+                toastr.error(error);
+            }
         }
 
         function displayWarning(message) {

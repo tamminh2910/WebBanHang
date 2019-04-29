@@ -5,10 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebBanHang.Model.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace WebBanHang.Data
 {
-    public class WebBanHangDbContext : DbContext
+    public class WebBanHangDbContext : IdentityDbContext<ApplicationUser>
     {
         public WebBanHangDbContext() : base("WebBanHang")
         {
@@ -21,14 +22,17 @@ namespace WebBanHang.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<State> States { get; set; }
         public DbSet<Error> Errors { get; set; }
 
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        public static WebBanHangDbContext Create()
         {
-            base.OnModelCreating(modelBuilder);
+            return new WebBanHangDbContext();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder builder)
+        {
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
     }
 }

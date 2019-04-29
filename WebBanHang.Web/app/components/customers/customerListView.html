@@ -5,8 +5,8 @@
         <small></small>
     </h1>
     <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a class="active">Khách hàng</a></li>
+        <li><a ui-sref="home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a class="active">Quản lý khach hàng</a></li>
     </ol>
 </section>
 <!-- Main content -->
@@ -50,17 +50,48 @@
                 <div class="col-md-12">
                     <table class="table table-bordered">
                         <tr>
-                            <th><input type="checkbox" name="all" ng-click="selectAll()"/></th>
-                            <th style="width: 5%">ID</th>
-                            <th style="width:20%">Tên khách hàng</th>
-                            <th style="width:15%">Ngày sinh</th>
-                            <th style="width:10%">SĐT</th>
-                            <th style="width:20%">Tên đăng nhập</th>
-                            <th style="width: 15%">Ngày tạo</th>
+                            <th><input type="checkbox" name="all" ng-click="selectAll()" /></th>
+                            <th style="width: 8%">
+                                <button ng-click="sortBy('CustomerID')" class="btn btn-default">
+                                    ID
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='CustomerID'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th style="width:20%">
+                                <button ng-click="sortBy('CustomerName')" class="btn btn-default">
+                                    Tên khách hàng      
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='CustomerName'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th style="width:14%">
+                                <button ng-click="sortBy('Birthday')" class="btn btn-default">
+                                    Ngày sinh
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='Birthday'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th style="width:10%">
+                                <button ng-click="sortBy('Phone')" class="btn btn-default">
+                                    Số điện thoại
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='Phone'" ng-class="{reverse:reverse}"></span>
+
+                                </button>
+                            </th>
+                            <th style="width:20%">
+                                <button ng-click="sortBy('UserName')" class="btn btn-default">
+                                    Tên đăng nhập
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='UserName'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th style="width: 13%">
+                                <button ng-click="sortBy('CreatedDate')" class="btn btn-default">
+                                    Ngày tạo
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='CreatedDate'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
                             <th>Thao tác</th>
                         </tr>
-                        <tr ng-repeat="item in customers">
-                            <td><input type="checkbox" name="all" ng-model="item.checked"/></td>
+                        <tr ng-repeat="item in customers | orderBy:propertyName:reverse">
+                            <td><input type="checkbox" name="all" ng-model="item.checked" /></td>
                             <td>{{item.CustomerID}}</td>
                             <td>{{item.CustomerName}}</td>
                             <td>{{item.Birthday | date: 'dd/MM/yyyy'}}</td>
@@ -84,7 +115,7 @@
             </div>
         </div>
         <!-- /.box-body -->
-        <div class="box-footer">
+        <div>
             <pager-directive page="{{page}}" custom-path="{{customPaths}}" pages-count="{{pagesCount}}" total-count="{{}}" search-func="getListCustomers(page)"></pager-directive>
         </div>
         <!-- /.box-footer-->

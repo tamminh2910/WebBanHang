@@ -42,9 +42,7 @@ namespace WebBanHang.Model.Entities
         [Display(Name = "Ngày tạo")]
         public DateTime CreatedDate { get; set; }
 
-        public string RoleName { get; set; }
-
-        [ForeignKey("RoleName")]
-        public virtual Role Role { set; get; }
+        
+     
     }
 }

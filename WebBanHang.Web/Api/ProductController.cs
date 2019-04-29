@@ -15,6 +15,7 @@ using WebBanHang.Web.Models;
 namespace WebBanHang.Web.Api
 {
     [RoutePrefix("api/product")]
+    [Authorize]
     public class ProductController : ApiControllerBase
     {
         private IProductService _productService;

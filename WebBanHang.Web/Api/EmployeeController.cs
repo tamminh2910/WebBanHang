@@ -49,6 +49,20 @@ namespace WebBanHang.Web.Api
                 return response;
             });
         }
+        [Route("GetAllEmployees")]
+        [HttpGet]
+        public HttpResponseMessage GetAllEmployees(HttpRequestMessage request)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                var model = _employeeService.GetAll();
+
+                var responseData = Mapper.Map<IEnumerable<Employee>, IEnumerable<EmployeeViewModel>>(model);
+
+                var response = request.CreateResponse(HttpStatusCode.OK, responseData);
+                return response;
+            });
+        }
 
 
         [Route("getbyid/{id:int}")]

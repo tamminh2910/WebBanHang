@@ -11,14 +11,21 @@ namespace WebBanHang.Model.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int OrderID { get; set; }
 
-        [Display(Name = "Khách hàng")]
-        public int? CustomerID { get; set; }
+        [Required]
+        [MaxLength(256)]
+        public string CustomerName { set; get; }
 
-        [Display(Name = "Nhân viên")]
-        public int? EmployeeID { get; set; }
+      
+        [Required]
+        [MaxLength(256)]
+        public string CustomerEmail { set; get; }
+
+        [Required]
+        [MaxLength(50)]
+        public string CustomerPhone { set; get; }
 
         [Display(Name = "Tình trạng giao hàng")]
-        public int? StateID { get; set; }
+        public bool Status { get; set; }
 
         [Display(Name = "Ngày đặt hàng")]
         [DataType(DataType.DateTime)]
@@ -31,16 +38,14 @@ namespace WebBanHang.Model.Entities
         [Display(Name = "Địa chỉ giao hàng")]
         public string ShipAddress { get; set; }
 
+        [Display(Name = "Khách hàng")]
+        public int? CustomerID { get; set; }
+
         [ForeignKey("CustomerID")]
         public virtual Customer Customer { get; set; }
 
-        [ForeignKey("EmployeeID")]
-        public virtual Employee Employee { get; set; }
-
+   
         [ForeignKey("OrderID")]
         public virtual IEnumerable<OrderDetail> OrderDetails { get; set; }
-
-        [ForeignKey("StateID")]
-        public virtual State State { set; get; }
     }
 }

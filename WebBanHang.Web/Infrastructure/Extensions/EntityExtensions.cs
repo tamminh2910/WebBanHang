@@ -43,7 +43,6 @@ namespace WebBanHang.Web.Infrastructure.Extensions
         public static void UpdateCustomer(this Customer customer, CustomerViewModel customerViewModel)
         {
             customer.CustomerID = customerViewModel.CustomerID;
-            customer.OrderID = customerViewModel.OrderID;
             customer.CustomerName = customerViewModel.CustomerName;
             customer.Birthday = customerViewModel.Birthday;
             customer.Address = customerViewModel.Address;
@@ -65,8 +64,44 @@ namespace WebBanHang.Web.Infrastructure.Extensions
             employee.Image = employeeViewModel.Image;
             employee.UserName = employeeViewModel.UserName;
             employee.Password = employeeViewModel.Password;
-            employee.RoleName = employeeViewModel.RoleName;
             employee.CreatedDate = employeeViewModel.CreatedDate;
+
+
+        }
+
+        public static void UpdateOrder(this Order order, OrderViewModel orderViewModel)
+        {
+            order.OrderID = orderViewModel.OrderID;
+            order.CustomerID = orderViewModel.CustomerID;
+            order.OrderDate = orderViewModel.OrderDate;
+            order.ShippedDate = orderViewModel.ShippedDate;
+            order.ShipAddress = orderViewModel.ShipAddress;
+            order.CustomerName = orderViewModel.CustomerName;
+            order.CustomerEmail = orderViewModel.CustomerEmail;
+            order.CustomerPhone = orderViewModel.CustomerPhone;
+            order.Status = orderViewModel.Status;
+        }
+
+        public static void UpdateOrderDetail(this OrderDetail orderDetail, OrderDetailViewModel orderDetailViewModel)
+        {
+
+            orderDetail.OrderID = orderDetailViewModel.OrderID;
+            orderDetail.ProductID = orderDetailViewModel.ProductID;
+            orderDetail.UnitPrice = orderDetailViewModel.UnitPrice;
+            orderDetail.Quantity = orderDetailViewModel.Quantity;
+            orderDetail.Discount = orderDetailViewModel.Discount;
+        }
+
+        public static void UpdateUser(this ApplicationUser user, ApplicationUserViewModel userViewModel)
+        {
+
+            user.Id = userViewModel.Id;
+            user.FullName = userViewModel.FullName;
+            user.BirthDay = userViewModel.BirthDay;
+            user.Email = userViewModel.Email;
+            user.UserName = userViewModel.UserName;
+            user.PhoneNumber = userViewModel.PhoneNumber;
+            user.Image = userViewModel.Image;
         }
     }
 }

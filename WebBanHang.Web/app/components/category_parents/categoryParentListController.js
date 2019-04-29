@@ -14,6 +14,12 @@
         $scope.selectAll = selectAll;
 
         $scope.deleteMultiple = deleteMultiple;
+        $scope.propertyName = '';
+        $scope.reverse = true;
+        $scope.sortBy = function (propertyName) {
+            $scope.reverse = ($scope.propertyName === propertyName) ? !$scope.reverse : false;
+            $scope.propertyName = propertyName;
+        };
 
         function deleteMultiple() {
             var listID = [];
@@ -91,7 +97,7 @@
                 params: {
                     keyword: $scope.keyword,
                     page: page,
-                    pageSize: 10
+                    pageSize: 7
                 }
             }
             apiService.get('/api/categoryparent/getall', config, function (result) {

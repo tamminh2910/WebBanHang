@@ -15,6 +15,7 @@ using WebBanHang.Web.Models;
 namespace WebBanHang.Web.Api
 {
     [RoutePrefix("api/categorychild")]
+    [Authorize]
     public class CategoryChildController : ApiControllerBase
     {
         private ICategoryChildService _categoryChildService;

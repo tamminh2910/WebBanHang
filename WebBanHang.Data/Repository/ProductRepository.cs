@@ -10,7 +10,6 @@ namespace WebBanHang.Data.Repository
 {
     public interface IProductRepository : IRepository<Product>
     {
-
     }
     public class ProductRepository:RepositoryBase<Product>,IProductRepository
     {
@@ -18,5 +17,7 @@ namespace WebBanHang.Data.Repository
         {
 
         }
+
+      
     }
 }

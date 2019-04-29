@@ -1,0 +1,118 @@
+﻿ <!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Danh sách đơn hàng
+        <small></small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="home"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+        <li><a class="active">Quản lý đơn hàng</a></li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="box">
+        <div class="box-header with-border">
+            <div class="box-tools pull-right">
+                
+            </div>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form ng-submit="search()">
+                        <div class="input-group">
+
+                            <input type="text" ng-model="keyword" class="form-control" placeholder="Nhập từ khóa...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" ng-click="search()">Tìm kiếm</button>
+                            </span>
+                        </div><!-- /input-group -->
+
+                    </form>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                   
+                    <button class="btn btn-danger" type="button" ng-click="deleteMultiple()" id="btnDelete" disabled>Xóa</button>
+
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th><input type="checkbox" name="all" ng-click="selectAll()" /></th>
+                            <th style="width: 8%">
+                                <button ng-click="sortBy('OrderID')" class="btn btn-default">
+                                    ID
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='OrderID'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th style="width:20%">
+                                <button ng-click="sortBy('CustomerName')" class="btn btn-default">
+                                    Tên khách hàng
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='CustomerName'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th style="width:10%">
+                                <button ng-click="sortBy('CustomerPhone')" class="btn btn-default">
+                                    Số điện thoại
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='CustomerPhone'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th style="width:15%">
+                                <button ng-click="sortBy('OrderDate')" class="btn btn-default">
+                                    Ngày đặt hàng
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='OrderDate'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th style="width:25%">
+                                <button ng-click="sortBy('ShipAddress')" class="btn btn-default">
+                                    Địa chỉ giao hàng
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='ShipAddress'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th style="width: 10%">
+                                <button ng-click="sortBy('Status')" class="btn btn-default">
+                                    Trạng thái
+                                    <span class="fa fa-fw fa-sort" ng-show="propertyName=='Status'" ng-class="{reverse:reverse}"></span>
+                                </button>
+                            </th>
+                            <th>Thao tác</th>
+                        </tr>
+                        <tr ng-repeat="item in orders |orderBy:propertyName:reverse">
+                            <td><input type="checkbox" name="all" ng-model="item.checked" /></td>
+                            <td>{{item.OrderID}}</td>
+                            <td>{{item.CustomerName}}</td>
+                            <td>{{item.CustomerPhone}}</td>
+                            <td>
+                                {{item.OrderDate | date: 'dd/MM/yyyy hh:mm:ss'}}
+                            </td>
+                            <td>{{item.ShipAddress}}</td>
+                            <td><span ng-class="{'badge bg-red':item.Status==false,'badge bg-green':item.Status==true}" class="badge bg-red">{{item.Status | statusFilter}}</span></td>
+                            <td>
+                                <button ui-sref="edit_order({id:item.OrderID})" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></button>
+                                <button class="btn btn-sm btn-danger" ng-click="deleteOrder(item.OrderID)"><i class="fa fa-trash"></i></button>
+                            </td>
+
+                        </tr>
+                        <tfoot>
+                            <tr>
+                                <td colspan="8"><span class="pull-right">Trang: {{page + 1}} - Tổng số bảng ghi: {{totalCount}}</span></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer">
+            <pager-directive page="{{page}}" custom-path="{{customPaths}}" pages-count="{{pagesCount}}" total-count="{{}}" search-func="getListProducts(page)"></pager-directive>
+        </div>
+        <!-- /.box-footer-->
+    </div>
+    <!-- /.box -->
+</section>
+<!-- /.content -->

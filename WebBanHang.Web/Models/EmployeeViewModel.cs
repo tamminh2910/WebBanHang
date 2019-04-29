@@ -27,8 +27,6 @@ namespace WebBanHang.Web.Models
 
         public DateTime CreatedDate { get; set; }
 
-        public string RoleName { get; set; }
-
-        public virtual RoleViewModel Role { set; get; }
+     
     }
 }
