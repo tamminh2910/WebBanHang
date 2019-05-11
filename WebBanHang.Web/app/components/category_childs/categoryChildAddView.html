@@ -1,6 +1,6 @@
 ﻿<section class="content-header">
     <h1>
-        Thêm mới danh mục sản phẩm cha
+        Thêm mới danh mục sản phẩm con
         <small></small>
     </h1>
     <ol class="breadcrumb">
@@ -34,7 +34,7 @@
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Danh mục cha</label>
                     <div class="col-sm-10">
-                        <select name="parentId" class="form-control" ng-model="categoryChild.CategoryParentID" ng-options="option.CategoryParentID as option.CategoryParentName for option in parentCategories">
+                        <select name="parentId" required class="form-control" ng-model="categoryChild.CategoryParentID" ng-options="option.CategoryParentID as option.CategoryParentName for option in parentCategories" >
                             <option value="">--Danh mục cha--</option>
                         </select>
                         <input type="hidden" name="categorParentID" ng-model="categoryChild.CategoryParentID" />

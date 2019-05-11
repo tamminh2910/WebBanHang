@@ -139,10 +139,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebBanHang.Common\WebBanHang.Common.csproj">
-      <Project>{7d7098cb-8a2e-400c-aac5-8c28e8832dcf}</Project>
-      <Name>WebBanHang.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebBanHang.Model\WebBanHang.Model.csproj">
       <Project>{C58AB834-4CF4-4139-A89A-0203E22903E9}</Project>
       <Name>WebBanHang.Model</Name>

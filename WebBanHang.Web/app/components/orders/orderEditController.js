@@ -20,7 +20,7 @@
             var total = 0;
             for (var i = 0; i < $scope.orderDetails.length; i++) {
                 var orderdetail = $scope.orderDetails[i];
-                total += (orderdetail.UnitPrice * orderdetail.Quantity - orderdetail.Discount);
+                total += (orderdetail.UnitPrice * orderdetail.Quantity);
             }
             return total;
         }

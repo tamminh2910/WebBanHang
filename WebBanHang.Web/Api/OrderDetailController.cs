@@ -59,7 +59,7 @@ namespace WebBanHang.Web.Api
             return CreateHttpResponse(request, () =>
             {
                 var product = _productService.GetAll();
-                var model = _orderDetailService.GetOrderDetails(id).Join(product, od => od.ProductID, prod => prod.ProductID, (od, prod) => new {OrderID= od.OrderID,ProductName=prod.Name,UnitPrice=od.UnitPrice,Quantity=od.Quantity,Discount=od.Discount });
+                var model = _orderDetailService.GetOrderDetails(id).Join(product, od => od.ProductID, prod => prod.ProductID, (od, prod) => new {ProductID= prod.ProductID,ProductName=prod.Name,UnitPrice=od.UnitPrice,Quantity=od.Quantity,Discount=od.Discount });
                 
                 
 

@@ -22,10 +22,10 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
-            CreateCategoryParent(context);
-            CreateCategoryChild(context);
-            CreateCustomer(context);
-            CreateEmployee(context);
+            //CreateCategoryParent(context);
+            //CreateCategoryChild(context);
+            //CreateCustomer(context);
+            //CreateEmployee(context);
 
             //var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new WebBanHangDbContext()));
 
@@ -33,11 +33,11 @@
 
             //var user = new ApplicationUser()
             //{
-            //    UserName = "admin",
-            //    Email = "tamminh.2910@gmail.com",
+            //    UserName = "nguyenvanbay",
+            //    Email = "nguyenvanbay@gmail.com",
             //    EmailConfirmed = true,
             //    BirthDay = DateTime.Now,
-            //    FullName = "Nguyễn Minh Tâm"
+            //    FullName = "Nguyễn Văn Bảy"
 
             //};
 
@@ -49,7 +49,7 @@
             //    roleManager.Create(new IdentityRole { Name = "User" });
             //}
 
-            //var adminUser = manager.FindByEmail("tamminh.2910@gmail.com");
+            //var adminUser = manager.FindByEmail("nguyenvanbay@gmail.com");
 
             //manager.AddToRoles(adminUser.Id, new string[] { "Admin", "User" });
             //CreateOrder(context);
@@ -60,17 +60,18 @@
             Order order = new Order()
             {
                 CustomerName = "Nguyễn Văn Bảy",
-                CustomerEmail = "nguyenbay@gmail.com",
-                CustomerPhone = "0975362123",
+                CustomerEmail = "vanbay@gmail.com",
+                CustomerPhone = "0975415479",
                 OrderDate = DateTime.Now,
-                Status = true
+                Status = true,
+                ShipAddress= "23 đường Phổ Quang, Phường 15, Quận Phú Nhuận, TP. HCM"
             };
             context.Orders.Add(order);
             context.SaveChanges();
             List<OrderDetail> orderDetails = new List<OrderDetail>()
             {
-                new OrderDetail(){ProductID=3,OrderID= order.OrderID,Quantity=2,UnitPrice=12323},
-                new OrderDetail(){ProductID=4,OrderID= order.OrderID,Quantity=2,UnitPrice=23123},
+                new OrderDetail(){ProductID=15,OrderID= order.OrderID,Quantity=2,UnitPrice=499000},
+                new OrderDetail(){ProductID=11,OrderID= order.OrderID,Quantity=2,UnitPrice=5290000},
             };
             context.OrderDetails.AddRange(orderDetails);
             context.SaveChanges();

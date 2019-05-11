@@ -7769,10 +7769,6 @@
     <Content Include="Views\Admin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebBanHang.Common\WebBanHang.Common.csproj">
-      <Project>{7d7098cb-8a2e-400c-aac5-8c28e8832dcf}</Project>
-      <Name>WebBanHang.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebBanHang.Data\WebBanHang.Data.csproj">
       <Project>{1d8568d8-ad20-40a1-9408-ee08cb4e80aa}</Project>
       <Name>WebBanHang.Data</Name>

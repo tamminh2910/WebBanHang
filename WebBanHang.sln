@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBanHang.Common", "WebBanHang.Common\WebBanHang.Common.csproj", "{7D7098CB-8A2E-400C-AAC5-8C28E8832DCF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBanHang.Model", "WebBanHang.Model\WebBanHang.Model.csproj", "{C58AB834-4CF4-4139-A89A-0203E22903E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebBanHang.Data", "WebBanHang.Data\WebBanHang.Data.csproj", "{1D8568D8-AD20-40A1-9408-EE08CB4E80AA}"
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7D7098CB-8A2E-400C-AAC5-8C28E8832DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D7098CB-8A2E-400C-AAC5-8C28E8832DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D7098CB-8A2E-400C-AAC5-8C28E8832DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D7098CB-8A2E-400C-AAC5-8C28E8832DCF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C58AB834-4CF4-4139-A89A-0203E22903E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C58AB834-4CF4-4139-A89A-0203E22903E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C58AB834-4CF4-4139-A89A-0203E22903E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
